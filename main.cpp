@@ -1,6 +1,7 @@
 #include <iostream>
 #include <fstream>
 #include <sstream>
+#include <string>
 #include <vector>
 #include "Employee.h"
 #include "HourlyEmployee.h"
@@ -35,17 +36,35 @@ void readFile(const string& filename, vector<HourlyEmployee>& hourlyEmployees, v
     }
 }
 
+void displayEmpInfo(const vector<HourlyEmployee> hourlyEmployees, const vector<SalariedEmployee> salariedEmployees) {
+    cout << "Hourly Employees:\n";
+    for (auto &e : hourlyEmployees) {
+        cout << "ID: " << to_string(e.getID()) << " | ";
+        cout << "Name: " << e.getName() << " | ";
+        cout << "Pay this period: $" << e.calculatePay() << "\n";
+    }
+
+    cout << "\nSalaried Employees:\n";
+    for (auto &e : salariedEmployees) {
+        cout << "ID: " << to_string(e.getID()) << " | ";
+        cout << "Name: " << e.getName() << " | ";
+        cout << "Pay this period: $" << e.calculatePay() << "\n";
+    }
+}
+
 int main() {
     
     /* TODO: Define two vectors: HourlyEmployee and SalariedEmployee */
+    vector<HourlyEmployee> hourEmp;
+    vector<SalariedEmployee> salarEmp;
 
     // TODO: Add vectors to readFile call, hourly first
-    readFile("employee_info.csv", , );
+    readFile("employee_info.csv", hourEmp,salarEmp);
     double result = 0;
 
     // TODO: Print the results
     // Remember that you can use the range based for loop
     // Display the results of each type of employee
-
+    displayEmpInfo(hourEmp, salarEmp);
     return 0;
 }
